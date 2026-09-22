@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
       rel="stylesheet">
 
-<!-- Responsive Navigation Fix -->
+<!-- Responsive Navigation -->
 <style>
     html,
     body {
@@ -34,8 +34,6 @@
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        padding-left: 5%;
-        padding-right: 5%;
     }
 
     .navbar nav {
@@ -49,6 +47,11 @@
 
     .navbar nav a {
         white-space: nowrap;
+    }
+
+    /* Make service cards clickable */
+    .service-card {
+        cursor: pointer;
     }
 
     @media (max-width: 900px) {
@@ -81,16 +84,6 @@
             font-size: 20px;
         }
     }
-
-    /* Clickable Service Cards */
-    .service-card {
-        cursor: pointer;
-    }
-
-    .service-card a {
-        position: relative;
-        z-index: 2;
-    }
 </style>
 ```
 
@@ -99,7 +92,10 @@
 <body>
 
 ```
-<!-- Navigation -->
+<!-- ================================
+     NAVIGATION
+================================= -->
+
 <header class="navbar">
 
     <div class="logo">
@@ -107,26 +103,38 @@
     </div>
 
     <nav>
-        <a href="#home">Home</a>
 
-        <a href="#services">Services</a>
+        <a href="#home">
+            Home
+        </a>
 
-        <!-- Packages -->
+        <a href="#services">
+            Services
+        </a>
+
         <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa"
            target="_blank"
            rel="noopener noreferrer">
             Packages
         </a>
 
-        <a href="#reviews">Reviews</a>
+        <a href="#reviews">
+            Reviews
+        </a>
 
-        <a href="#contact">Contact</a>
+        <a href="#contact">
+            Contact
+        </a>
+
     </nav>
 
 </header>
 
 
-<!-- Hero Section -->
+<!-- ================================
+     HERO
+================================= -->
+
 <section id="home" class="hero">
 
     <div class="hero-overlay"></div>
@@ -149,7 +157,6 @@
 
         <div class="hero-buttons">
 
-            <!-- View Packages -->
             <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa"
                target="_blank"
                rel="noopener noreferrer"
@@ -157,5 +164,281 @@
                 View Packages
             </a>
 
-            <a href="#contact" class="btn secondary-btn"
+            <a href="#contact"
+               class="btn secondary-btn">
+                Book Your Detail
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="scroll-indicator">
+        <span></span>
+        SCROLL TO EXPLORE
+    </div>
+
+</section>
+
+
+<!-- ================================
+     SERVICES
+================================= -->
+
+<section id="services" class="section services-section">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            WHAT WE DO
+        </p>
+
+        <h2>
+            Premium <span>Services</span>
+        </h2>
+
+        <p>
+            Professional detailing services designed to restore,
+            protect, and enhance your vehicle.
+        </p>
+
+    </div>
+
+
+    <div class="service-grid">
+
+
+        <!-- EXTERIOR DETAILING -->
+
+        <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa/CcgamXmrs4WF3cMOZV8a"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="service-card">
+
+            <div class="service-number">
+                01
+            </div>
+
+            <h3>
+                Exterior Detailing
+            </h3>
+
+            <p>
+                A meticulous exterior treatment including
+                hand washing, paint decontamination, polishing,
+                and premium protection.
+            </p>
+
+            <span>
+                Learn More →
+            </span>
+
+        </a>
+
+
+        <!-- INTERIOR DETAILING -->
+
+        <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa/Ij7rpIwOh4vaUW5Dbif1"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="service-card">
+
+            <div class="service-number">
+                02
+            </div>
+
+            <h3>
+                Interior Detailing
+            </h3>
+
+            <p>
+                Deep cleaning and restoration of leather,
+                upholstery, carpets, dashboards, and
+                interior surfaces.
+            </p>
+
+            <span>
+                Learn More →
+            </span>
+
+        </a>
+
+
+        <!-- CERAMIC COATING -->
+
+        <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa/bq0Y4NTGKzbUvH5cga3l"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="service-card">
+
+            <div class="service-number">
+                03
+            </div>
+
+            <h3>
+                Ceramic Coating
+            </h3>
+
+            <p>
+                Advanced paint protection that delivers
+                exceptional gloss, hydrophobic protection,
+                and long-lasting durability.
+            </p>
+
+            <span>
+                Learn More →
+            </span>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     REVIEWS
+================================= -->
+
+<section id="reviews" class="section reviews-section">
+
+    <div class="section-heading">
+
+        <p class="eyebrow">
+            CLIENT EXPERIENCE
+        </p>
+
+        <h2>
+            What Our <span>Clients Say</span>
+        </h2>
+
+    </div>
+
+
+    <div class="reviews-grid">
+
+
+        <div class="review-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "The attention to detail was incredible. My car
+                looked better than it did the day I bought it."
+            </p>
+
+            <h4>
+                Michael R.
+            </h4>
+
+            <span>
+                BMW M4 Owner
+            </span>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "Professional, detailed, and extremely careful
+                with my vehicle. The ceramic coating looks amazing."
+            </p>
+
+            <h4>
+                Sarah T.
+            </h4>
+
+            <span>
+                Porsche 911 Owner
+            </span>
+
+        </div>
+
+
+        <div class="review-card">
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <p>
+                "Absolutely worth it. The interior looks brand
+                new and the paint has an incredible shine."
+            </p>
+
+            <h4>
+                David M.
+            </h4>
+
+            <span>
+                Mercedes-Benz Owner
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     CONTACT
+================================= -->
+
+<section id="contact" class="contact-section">
+
+    <div class="contact-content">
+
+        <p class="eyebrow">
+            READY FOR THE NEXT LEVEL?
+        </p>
+
+        <h2>
+            Give Your Car<br>
+            <span>The Treatment It Deserves.</span>
+        </h2>
+
+        <p>
+            Schedule your premium detailing experience today.
+        </p>
+
+        <a href="mailto:info@eliteautodetailing.com"
+           class="btn primary-btn">
+            Book Your Detail
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================================
+     FOOTER
+================================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        STURGIS<span>DETAILS</span>
+    </div>
+
+    <p>
+        Premium Automotive Detailing
+    </p>
+
+    <p class="copyright">
+        © 2026 Sturgis Auto Detailing. All Rights Reserved.
+    </p>
+
+</footer>
 ```
+
+</body>
+</html>
