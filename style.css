@@ -1,0 +1,764 @@
+```css
+/* =========================================
+   GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    z-index: 10;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.75),
+        transparent
+    );
+}
+
+.logo {
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    color: #c9a45c;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+nav a {
+    position: relative;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: #c9a45c;
+
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #c9a45c;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 7%;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=2200&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.65) 40%,
+            rgba(0, 0, 0, 0.20) 100%
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 700px;
+}
+
+.eyebrow {
+    color: #c9a45c;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(60px, 7vw, 105px);
+
+    line-height: 0.98;
+
+    font-weight: 500;
+
+    margin-bottom: 30px;
+}
+
+.hero h1 span {
+    color: #c9a45c;
+}
+
+.hero-description {
+    max-width: 520px;
+
+    color: #d0d0d0;
+
+    font-size: 16px;
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.hero-buttons {
+    display: flex;
+    gap: 18px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 180px;
+
+    padding: 15px 28px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+.primary-btn {
+    background: #c9a45c;
+    color: #080808;
+}
+
+.primary-btn:hover {
+    background: #ffffff;
+    transform: translateY(-3px);
+}
+
+.secondary-btn {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+}
+
+.secondary-btn:hover {
+    border-color: #c9a45c;
+    color: #c9a45c;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   SCROLL INDICATOR
+========================================= */
+
+.scroll-indicator {
+    position: absolute;
+
+    right: 7%;
+    bottom: 45px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+
+    color: #aaaaaa;
+
+    transform: rotate(90deg);
+    transform-origin: right center;
+}
+
+.scroll-indicator span {
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    background: #c9a45c;
+}
+
+
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
+
+.section {
+    padding: 120px 7%;
+}
+
+.section-heading {
+    max-width: 650px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+}
+
+.section-heading h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(40px, 5vw, 65px);
+
+    font-weight: 500;
+
+    margin-bottom: 20px;
+}
+
+.section-heading h2 span {
+    color: #c9a45c;
+}
+
+.section-heading > p:last-child {
+    color: #999999;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   SERVICES
+========================================= */
+
+.services-section {
+    background: #0b0b0b;
+}
+
+.service-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.service-card {
+    padding: 40px 30px;
+
+    min-height: 330px;
+
+    background: #111111;
+
+    border: 1px solid #1d1d1d;
+
+    transition: 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #c9a45c;
+}
+
+.service-number {
+    color: #c9a45c;
+
+    font-size: 13px;
+
+    margin-bottom: 55px;
+}
+
+.service-card h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    margin-bottom: 18px;
+}
+
+.service-card p {
+    color: #999999;
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+.service-card a {
+    color: #c9a45c;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   PACKAGES
+========================================= */
+
+.packages-section {
+    background: #080808;
+}
+
+.package-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.package-card {
+    position: relative;
+
+    padding: 45px 35px;
+
+    background: #101010;
+
+    border: 1px solid #222222;
+
+    transition: 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-8px);
+}
+
+.package-card.featured {
+    border: 1px solid #c9a45c;
+}
+
+.popular {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    padding: 8px 15px;
+
+    background: #c9a45c;
+    color: #080808;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.package-label {
+    color: #c9a45c;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+}
+
+.package-card h3 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 28px;
+
+    margin: 15px 0;
+}
+
+.price {
+    font-size: 42px;
+
+    font-weight: 300;
+
+    margin-bottom: 25px;
+}
+
+.package-card ul {
+    list-style: none;
+
+    border-top: 1px solid #292929;
+
+    padding-top: 20px;
+
+    margin-bottom: 30px;
+}
+
+.package-card li {
+    color: #a5a5a5;
+
+    font-size: 13px;
+
+    padding: 7px 0;
+}
+
+.package-button {
+    display: block;
+
+    text-align: center;
+
+    border: 1px solid #555555;
+
+    padding: 13px;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+.package-button:hover {
+    background: #c9a45c;
+    color: #080808;
+
+    border-color: #c9a45c;
+}
+
+
+/* =========================================
+   REVIEWS
+========================================= */
+
+.reviews-section {
+    background: #0b0b0b;
+}
+
+.reviews-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.review-card {
+    padding: 40px;
+
+    background: #111111;
+
+    border: 1px solid #1e1e1e;
+}
+
+.stars {
+    color: #c9a45c;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+}
+
+.review-card p {
+    color: #cccccc;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 18px;
+
+    font-style: italic;
+
+    margin-bottom: 30px;
+}
+
+.review-card h4 {
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.review-card span {
+    color: #777777;
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.contact-section {
+    position: relative;
+
+    padding: 150px 7%;
+
+    text-align: center;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.75),
+            rgba(0, 0, 0, 0.9)
+        ),
+        url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2200&q=90");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.contact-content {
+    max-width: 800px;
+
+    margin: auto;
+}
+
+.contact-content h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 6vw, 75px);
+
+    line-height: 1;
+
+    margin-bottom: 25px;
+}
+
+.contact-content h2 span {
+    color: #c9a45c;
+}
+
+.contact-content > p:not(.eyebrow) {
+    color: #aaaaaa;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 50px 7%;
+
+    text-align: center;
+
+    background: #050505;
+
+    border-top: 1px solid #1c1c1c;
+}
+
+.footer-logo {
+    font-family: "Playfair Display", serif;
+
+    font-size: 22px;
+
+    letter-spacing: 3px;
+}
+
+.footer-logo span {
+    color: #c9a45c;
+}
+
+footer > p {
+    color: #777777;
+
+    font-size: 12px;
+
+    margin-top: 8px;
+}
+
+.copyright {
+    margin-top: 30px !important;
+
+    font-size: 10px !important;
+
+    color: #4d4d4d !important;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .package-grid {
+        grid-template-columns: 1fr;
+        max-width: 550px;
+    }
+
+    .reviews-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 25px 6%;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    nav {
+        gap: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 9px;
+
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        padding: 160px 6% 100px;
+
+        background-position: 65% center;
+    }
+
+    .hero h1 {
+        font-size: 55px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .section {
+        padding: 80px 6%;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        min-height: auto;
+    }
+
+    .section-heading {
+        margin-bottom: 45px;
+    }
+
+    .contact-section {
+        padding: 100px 6%;
+    }
+
+    .contact-content h2 {
+        font-size: 45px;
+    }
+
+}
+```
