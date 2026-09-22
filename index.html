@@ -5,93 +5,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<title>Sturgis Auto Detailing | Luxury Car Care</title>
+    <title>Sturgis Auto Detailing | Luxury Car Care</title>
 
-<meta name="description"
-      content="Premium luxury car detailing and ceramic coating services.">
+    <meta name="description"
+          content="Premium luxury car detailing and ceramic coating services.">
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<!-- Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
 
-<!-- Responsive Navigation -->
-<style>
-    html,
-    body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        margin: 0;
-    }
+    <!-- Responsive Navigation + Work Gallery -->
+    <style>
 
-    .navbar {
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-
-    .navbar nav {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        gap: 20px;
-        max-width: 100%;
-    }
-
-    .navbar nav a {
-        white-space: nowrap;
-    }
-
-    /* Make service cards clickable */
-    .service-card {
-        cursor: pointer;
-    }
-
-    @media (max-width: 900px) {
-        .navbar {
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-
-        .navbar nav {
-            justify-content: center;
-            gap: 15px;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .navbar nav {
+        html,
+        body {
             width: 100%;
-            justify-content: center;
-            gap: 10px 15px;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
         }
+
+
+        .navbar {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+
+        .navbar nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 100%;
+        }
+
 
         .navbar nav a {
-            font-size: 12px;
+            white-space: nowrap;
         }
 
-        .logo {
-            font-size: 20px;
+
+        /* Make service cards clickable */
+
+        .service-card {
+            cursor: pointer;
         }
-    }
-</style>
-```
+
+
+        /* =================================
+           OUR WORK PHOTO GALLERY
+        ================================= */
+
+        .work-section {
+            padding: 110px 0;
+            background: #050505;
+            overflow: hidden;
+        }
+
+
+        .work-section .section-heading {
+            padding: 0 7%;
+            margin-bottom: 45px;
+        }
+
+
+        /* Scrolling gallery */
+
+        .work-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+
+        .work-track {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            width: max-content;
+            animation: workScroll 40s linear infinite;
+        }
+
+
+        /* Smaller gallery pictures */
+
+        .work-image {
+            width: 280px;
+            height: 190px;
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+            background: #111;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+
+        .work-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+
+        .work-image:hover img {
+            transform: scale(1.06);
+        }
+
+
+        /* Scrolling animation */
+
+        @keyframes workScroll {
+
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+
+        }
+
+
+        /* Pause scrolling when hovering */
+
+        .work-slider:hover .work-track {
+            animation-play-state: paused;
+        }
+
+
+        /* =================================
+           IMAGE LIGHTBOX
+        ================================= */
+
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+
+        .image-lightbox.active {
+            display: flex;
+        }
+
+
+        .lightbox-image {
+            max-width: 90%;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+        }
+
+
+        /* Close button */
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 42px;
+            font-weight: 300;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 10000;
+            transition: opacity 0.3s ease;
+        }
+
+
+        .lightbox-close:hover {
+            opacity: 0.6;
+        }
+
+
+        /* =================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+
+            .navbar nav {
+                justify-content: center;
+                gap: 15px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar nav {
+                width: 100%;
+                justify-content: center;
+                gap: 10px 15px;
+            }
+
+
+            .navbar nav a {
+                font-size: 12px;
+            }
+
+
+            .logo {
+                font-size: 20px;
+            }
+
+
+            /* Smaller gallery on phones */
+
+            .work-section {
+                padding: 80px 0;
+            }
+
+
+            .work-section .section-heading {
+                padding: 0 7%;
+                margin-bottom: 35px;
+            }
+
+
+            .work-image {
+                width: 220px;
+                height: 150px;
+            }
+
+
+            .work-track {
+                gap: 12px;
+                animation-duration: 32s;
+            }
+
+
+            .lightbox-image {
+                max-width: 94%;
+                max-height: 75vh;
+            }
+
+
+            .lightbox-close {
+                top: 18px;
+                right: 22px;
+                font-size: 36px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
+
 <!-- ================================
      NAVIGATION
 ================================= -->
@@ -102,15 +300,18 @@
         STURGIS<span>DETAILS</span>
     </div>
 
+
     <nav>
 
         <a href="#home">
             Home
         </a>
 
+
         <a href="#services">
             Services
         </a>
+
 
         <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa"
            target="_blank"
@@ -118,9 +319,11 @@
             Packages
         </a>
 
+
         <a href="#reviews">
             Reviews
         </a>
+
 
         <a href="#contact">
             Contact
@@ -131,6 +334,7 @@
 </header>
 
 
+
 <!-- ================================
      HERO
 ================================= -->
@@ -139,21 +343,25 @@
 
     <div class="hero-overlay"></div>
 
+
     <div class="hero-content">
 
         <p class="eyebrow">
             PREMIUM AUTOMOTIVE DETAILING
         </p>
 
+
         <h1>
             Professional Detailing<br>
             <span>Delivered to you</span>
         </h1>
 
+
         <p class="hero-description">
             Experience premium automotive care designed for
             those who expect nothing less than exceptional.
         </p>
+
 
         <div class="hero-buttons">
 
@@ -164,6 +372,7 @@
                 View Packages
             </a>
 
+
             <a href="#contact"
                class="btn secondary-btn">
                 Book Your Detail
@@ -173,12 +382,14 @@
 
     </div>
 
+
     <div class="scroll-indicator">
         <span></span>
         SCROLL TO EXPLORE
     </div>
 
 </section>
+
 
 
 <!-- ================================
@@ -193,9 +404,11 @@
             WHAT WE DO
         </p>
 
+
         <h2>
             Premium <span>Services</span>
         </h2>
+
 
         <p>
             Professional detailing services designed to restore,
@@ -203,6 +416,7 @@
         </p>
 
     </div>
+
 
 
     <div class="service-grid">
@@ -219,9 +433,11 @@
                 01
             </div>
 
+
             <h3>
                 Exterior + Interior Detailing
             </h3>
+
 
             <p>
                 A meticulous exterior treatment including
@@ -229,11 +445,13 @@
                 and premium wax protection.
             </p>
 
+
             <span>
                 Learn More →
             </span>
 
         </a>
+
 
 
         <!-- INTERIOR DETAILING -->
@@ -247,15 +465,18 @@
                 02
             </div>
 
+
             <h3>
                 Interior Only Detailing
             </h3>
+
 
             <p>
                 Deep cleaning and restoration of leather,
                 upholstery, carpets, dashboards, and
                 interior surfaces.
             </p>
+
 
             <span>
                 Learn More →
@@ -264,7 +485,8 @@
         </a>
 
 
-        <!-- MAINTENCE PROGRAM -->
+
+        <!-- MAINTENANCE PROGRAM -->
 
         <a href="https://app.urable.com/virtual-shop/rJ2nT1k7yVBoVav5bQUa/bq0Y4NTGKzbUvH5cga3l"
            target="_blank"
@@ -275,15 +497,18 @@
                 03
             </div>
 
+
             <h3>
                 Maintence Program
             </h3>
 
+
             <p>
-                Recurring maintenance pricing for 
-                vehicles that have already been brought 
+                Recurring maintenance pricing for
+                vehicles that have already been brought
                 up to our detailing standard.
             </p>
+
 
             <span>
                 Learn More →
@@ -294,7 +519,9 @@
     </div>
 
 </section>
-    
+
+
+
 <!-- ================================
      OUR WORK
 ================================= -->
@@ -307,9 +534,11 @@
             OUR WORK
         </p>
 
+
         <h2>
             See The <span>Difference</span>
         </h2>
+
 
         <p>
             A closer look at the vehicles we've had the opportunity to detail.
@@ -318,32 +547,137 @@
     </div>
 
 
+
     <div class="work-slider">
 
         <div class="work-track">
 
-            <div class="work-image">
-                <img src="images/kiabefore1.jpg" alt="Professional car detailing">
+
+            <!-- PHOTO 1 -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/kiabefore1.jpg"
+                     alt="Kia before detailing">
+
             </div>
 
-            <div class="work-image">
-                <img src="images/kiaafter1.jpg" alt="Exterior car detailing">
+
+
+            <!-- PHOTO 2 -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/kiaafter1.jpg"
+                     alt="Kia after detailing">
+
             </div>
 
-            <div class="work-image">
-                <img src="images/work3.jpg" alt="Luxury vehicle detailing">
+
+
+            <!-- PHOTO 3 -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work3.jpg"
+                     alt="Luxury vehicle detailing">
+
             </div>
 
-            <div class="work-image">
-                <img src="images/work4.jpg" alt="Professional automotive detailing">
+
+
+            <!-- PHOTO 4 -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work4.jpg"
+                     alt="Professional automotive detailing">
+
             </div>
 
-            <div class="work-image">
-                <img src="images/work5.jpg" alt="Detailed vehicle exterior">
+
+
+            <!-- PHOTO 5 -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work5.jpg"
+                     alt="Detailed vehicle exterior">
+
             </div>
 
-            <div class="work-image">
-                <img src="images/work6.jpg" alt="Premium car detailing">
+
+
+            <!-- PHOTO 6 -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work6.jpg"
+                     alt="Premium car detailing">
+
+            </div>
+
+
+
+            <!-- DUPLICATE PHOTOS FOR SMOOTH LOOP -->
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/kiabefore1.jpg"
+                     alt="Kia before detailing">
+
+            </div>
+
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/kiaafter1.jpg"
+                     alt="Kia after detailing">
+
+            </div>
+
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work3.jpg"
+                     alt="Luxury vehicle detailing">
+
+            </div>
+
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work4.jpg"
+                     alt="Professional automotive detailing">
+
+            </div>
+
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work5.jpg"
+                     alt="Detailed vehicle exterior">
+
+            </div>
+
+
+            <div class="work-image"
+                 onclick="openLightbox(this)">
+
+                <img src="images/work6.jpg"
+                     alt="Premium car detailing">
+
             </div>
 
         </div>
@@ -351,6 +685,8 @@
     </div>
 
 </section>
+
+
 
 <!-- ================================
      REVIEWS
@@ -364,11 +700,13 @@
             CLIENT EXPERIENCE
         </p>
 
+
         <h2>
             What Our <span>Clients Say</span>
         </h2>
 
     </div>
+
 
 
     <div class="reviews-grid">
@@ -380,14 +718,17 @@
                 ★★★★★
             </div>
 
+
             <p>
                 "The attention to detail was incredible. My car
                 looked better than it did the day I bought it."
             </p>
 
+
             <h4>
                 Michael R.
             </h4>
+
 
             <span>
                 BMW M4 Owner
@@ -396,20 +737,24 @@
         </div>
 
 
+
         <div class="review-card">
 
             <div class="stars">
                 ★★★★★
             </div>
 
+
             <p>
                 "Professional, detailed, and extremely careful
                 with my vehicle. The ceramic coating looks amazing."
             </p>
 
+
             <h4>
                 Sarah T.
             </h4>
+
 
             <span>
                 Porsche 911 Owner
@@ -418,20 +763,24 @@
         </div>
 
 
+
         <div class="review-card">
 
             <div class="stars">
                 ★★★★★
             </div>
 
+
             <p>
                 "Absolutely worth it. The interior looks brand
                 new and the paint has an incredible shine."
             </p>
 
+
             <h4>
                 David M.
             </h4>
+
 
             <span>
                 Mercedes-Benz Owner
@@ -442,6 +791,7 @@
     </div>
 
 </section>
+
 
 
 <!-- ================================
@@ -456,14 +806,17 @@
             READY FOR THE NEXT LEVEL?
         </p>
 
+
         <h2>
             Give Your Car<br>
             <span>The Treatment It Deserves.</span>
         </h2>
 
+
         <p>
             Schedule your premium detailing experience today.
         </p>
+
 
         <a href="mailto:info@eliteautodetailing.com"
            class="btn primary-btn">
@@ -473,6 +826,7 @@
     </div>
 
 </section>
+
 
 
 <!-- ================================
@@ -485,16 +839,109 @@
         STURGIS<span>DETAILS</span>
     </div>
 
+
     <p>
         Premium Automotive Detailing
     </p>
+
 
     <p class="copyright">
         © 2026 Sturgis Auto Detailing. All Rights Reserved.
     </p>
 
 </footer>
-```
+
+
+
+<!-- ================================
+     IMAGE LIGHTBOX
+================================= -->
+
+<div id="imageLightbox"
+     class="image-lightbox"
+     onclick="closeLightbox(event)">
+
+    <span class="lightbox-close"
+          onclick="closeLightbox(event)">
+        &times;
+    </span>
+
+
+    <img id="lightboxImage"
+         class="lightbox-image"
+         src=""
+         alt="">
+
+</div>
+
+
+
+<!-- ================================
+     GALLERY JAVASCRIPT
+================================= -->
+
+<script>
+
+    function openLightbox(imageContainer) {
+
+        const image = imageContainer.querySelector("img");
+
+        const lightbox = document.getElementById("imageLightbox");
+
+        const lightboxImage = document.getElementById("lightboxImage");
+
+        lightboxImage.src = image.src;
+
+        lightboxImage.alt = image.alt;
+
+        lightbox.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeLightbox(event) {
+
+        /*
+         * Only close when clicking the dark background
+         * or the X button.
+         */
+
+        if (
+            event.target.id === "imageLightbox" ||
+            event.target.classList.contains("lightbox-close")
+        ) {
+
+            const lightbox = document.getElementById("imageLightbox");
+
+            lightbox.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+    }
+
+
+    /* Close lightbox with Escape key */
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+
+            const lightbox = document.getElementById("imageLightbox");
+
+            lightbox.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+    });
+
+</script>
+
 
 </body>
 </html>
