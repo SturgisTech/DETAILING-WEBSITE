@@ -140,14 +140,23 @@
         }
 
 
-        /* Scrolling gallery */
+        /* Gallery viewport */
 
         .work-slider {
             width: 100%;
             overflow: hidden;
             position: relative;
+            cursor: grab;
+            touch-action: pan-y;
         }
 
+
+        .work-slider:active {
+            cursor: grabbing;
+        }
+
+
+        /* Scrolling track */
 
         .work-track {
             display: flex;
@@ -155,6 +164,15 @@
             gap: 18px;
             width: max-content;
             animation: workScroll 40s linear infinite;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+
+        /* Stop automatic scrolling while user interacts */
+
+        .work-slider.interacting .work-track {
+            animation-play-state: paused;
         }
 
 
@@ -178,6 +196,7 @@
             object-fit: cover;
             display: block;
             transition: transform 0.5s ease;
+            pointer-events: none;
         }
 
 
@@ -234,22 +253,86 @@
 
 
         /* =================================
+           GALLERY INTERACTION BUTTONS
+        ================================= */
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.75);
+            color: #ffffff;
+
+            font-size: 25px;
+            font-weight: 300;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+
+        .gallery-arrow:hover {
+            background: #c9a45c;
+            border-color: #c9a45c;
+            color: #080808;
+        }
+
+
+        .gallery-arrow-left {
+            left: 20px;
+        }
+
+
+        .gallery-arrow-right {
+            right: 20px;
+        }
+
+
+        /* =================================
            IMAGE LIGHTBOX
         ================================= */
 
         .image-lightbox {
             display: none;
+
             position: fixed;
+
             z-index: 9999;
+
             top: 0;
             left: 0;
+
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.92);
+
+            background: rgba(0, 0, 0, 0.94);
+
             align-items: center;
             justify-content: center;
+
             padding: 30px;
+
             box-sizing: border-box;
+
+            user-select: none;
         }
 
 
@@ -258,13 +341,122 @@
         }
 
 
-        .lightbox-image {
+        /* Lightbox image area */
+
+        .lightbox-content {
+            position: relative;
+
             max-width: 90%;
-            max-height: 85vh;
+            max-height: 88vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 82vh;
+
             width: auto;
             height: auto;
+
             object-fit: contain;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.7);
+        }
+
+
+        /* =================================
+           LIGHTBOX BEFORE / AFTER LABEL
+        ================================= */
+
+        .lightbox-label {
+            position: absolute;
+
+            bottom: 20px;
+            right: 20px;
+
+            z-index: 10002;
+
+            color: #ffffff;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            background: rgba(0, 0, 0, 0.8);
+
+            padding: 9px 13px;
+
+            border: 1px solid rgba(255, 255, 255, 0.4);
+
+            pointer-events: none;
+        }
+
+
+        /* =================================
+           LIGHTBOX NAVIGATION
+        ================================= */
+
+        .lightbox-arrow {
+            position: absolute;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            color: #ffffff;
+
+            font-size: 30px;
+            font-weight: 300;
+
+            cursor: pointer;
+
+            z-index: 10001;
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        .lightbox-arrow:hover {
+            background: #c9a45c;
+            border-color: #c9a45c;
+            color: #080808;
+        }
+
+
+        .lightbox-prev {
+            left: 25px;
+        }
+
+
+        .lightbox-next {
+            right: 25px;
         }
 
 
@@ -272,14 +464,21 @@
 
         .lightbox-close {
             position: absolute;
+
             top: 25px;
             right: 35px;
+
             color: white;
+
             font-size: 42px;
             font-weight: 300;
+
             line-height: 1;
+
             cursor: pointer;
-            z-index: 10000;
+
+            z-index: 10003;
+
             transition: opacity 0.3s ease;
         }
 
@@ -314,6 +513,25 @@
 
             .service-video-card {
                 min-height: 280px;
+            }
+
+
+            /* Gallery arrows */
+
+            .gallery-arrow {
+                width: 42px;
+                height: 42px;
+                font-size: 22px;
+            }
+
+
+            .gallery-arrow-left {
+                left: 12px;
+            }
+
+
+            .gallery-arrow-right {
+                right: 12px;
             }
 
         }
@@ -372,6 +590,25 @@
             }
 
 
+            /* Mobile gallery arrows */
+
+            .gallery-arrow {
+                width: 38px;
+                height: 38px;
+                font-size: 20px;
+            }
+
+
+            .gallery-arrow-left {
+                left: 8px;
+            }
+
+
+            .gallery-arrow-right {
+                right: 8px;
+            }
+
+
             /* Mobile video */
 
             .service-video-card {
@@ -394,6 +631,8 @@
             }
 
 
+            /* Lightbox */
+
             .lightbox-image {
                 max-width: 94%;
                 max-height: 75vh;
@@ -404,6 +643,31 @@
                 top: 18px;
                 right: 22px;
                 font-size: 36px;
+            }
+
+
+            .lightbox-arrow {
+                width: 42px;
+                height: 42px;
+                font-size: 24px;
+            }
+
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+
+            .lightbox-label {
+                bottom: 12px;
+                right: 12px;
+                font-size: 10px;
+                padding: 7px 9px;
             }
 
         }
@@ -710,9 +974,34 @@
 
 
 
-    <div class="work-slider">
+    <div class="work-slider" id="workSlider">
 
-        <div class="work-track">
+
+        <!-- LEFT ARROW -->
+
+        <button
+            class="gallery-arrow gallery-arrow-left"
+            type="button"
+            aria-label="Previous photos"
+            onclick="scrollGallery(-1)">
+            &#10094;
+        </button>
+
+
+
+        <!-- RIGHT ARROW -->
+
+        <button
+            class="gallery-arrow gallery-arrow-right"
+            type="button"
+            aria-label="Next photos"
+            onclick="scrollGallery(1)">
+            &#10095;
+        </button>
+
+
+
+        <div class="work-track" id="workTrack">
 
 
             <!-- PHOTO 1 - BEFORE -->
@@ -1005,16 +1294,58 @@
      class="image-lightbox"
      onclick="closeLightbox(event)">
 
+
+    <!-- PREVIOUS IMAGE -->
+
+    <button
+        class="lightbox-arrow lightbox-prev"
+        type="button"
+        aria-label="Previous image"
+        onclick="previousLightboxImage(event)">
+        &#10094;
+    </button>
+
+
+
+    <!-- IMAGE -->
+
+    <div class="lightbox-content">
+
+        <img id="lightboxImage"
+             class="lightbox-image"
+             src=""
+             alt="">
+
+
+        <!-- BEFORE / AFTER LABEL -->
+
+        <span id="lightboxLabel"
+              class="lightbox-label"
+              style="display: none;">
+        </span>
+
+    </div>
+
+
+
+    <!-- NEXT IMAGE -->
+
+    <button
+        class="lightbox-arrow lightbox-next"
+        type="button"
+        aria-label="Next image"
+        onclick="nextLightboxImage(event)">
+        &#10095;
+    </button>
+
+
+
+    <!-- CLOSE BUTTON -->
+
     <span class="lightbox-close"
           onclick="closeLightbox(event)">
         &times;
     </span>
-
-
-    <img id="lightboxImage"
-         class="lightbox-image"
-         src=""
-         alt="">
 
 </div>
 
@@ -1026,30 +1357,456 @@
 
 <script>
 
+    /*
+     * ==========================================
+     * WORK GALLERY
+     * ==========================================
+     */
+
+
+    const workSlider = document.getElementById("workSlider");
+
+    const workTrack = document.getElementById("workTrack");
+
+
+    /*
+     * Move the scrolling gallery manually.
+     *
+     * Direction:
+     * -1 = previous
+     *  1 = next
+     */
+
+    function scrollGallery(direction) {
+
+        workSlider.classList.add("interacting");
+
+
+        const amount = 320;
+
+
+        workSlider.scrollBy({
+            left: amount * direction,
+            behavior: "smooth"
+        });
+
+
+        /*
+         * The gallery itself uses a moving CSS track,
+         * so manually shift the animation position instead.
+         */
+
+        const currentTransform =
+            window.getComputedStyle(workTrack).transform;
+
+
+        /*
+         * Temporarily speed up/slow down the animation
+         * so the user sees the gallery move.
+         */
+
+        workTrack.style.animationPlayState = "paused";
+
+
+        const currentMatrix =
+            new DOMMatrix(currentTransform);
+
+
+        let currentX = currentMatrix.m41;
+
+        currentX -= amount * direction;
+
+
+        /*
+         * Keep the gallery from moving too far.
+         */
+
+        const trackWidth = workTrack.scrollWidth / 2;
+
+
+        if (currentX < -trackWidth) {
+            currentX = 0;
+        }
+
+
+        if (currentX > 0) {
+            currentX = -trackWidth;
+        }
+
+
+        workTrack.style.transform =
+            `translateX(${currentX}px)`;
+
+
+        /*
+         * Resume automatic scrolling after a short delay.
+         */
+
+        clearTimeout(window.galleryResumeTimer);
+
+
+        window.galleryResumeTimer = setTimeout(function() {
+
+            workTrack.style.transform = "";
+
+            workTrack.style.animation = "workScroll 40s linear infinite";
+
+            workTrack.style.animationPlayState = "running";
+
+            workSlider.classList.remove("interacting");
+
+        }, 3500);
+
+    }
+
+
+
+    /*
+     * ==========================================
+     * DRAG / SWIPE GALLERY
+     * ==========================================
+     */
+
+    let isDragging = false;
+
+    let dragStartX = 0;
+
+    let dragDistance = 0;
+
+
+    workSlider.addEventListener("pointerdown", function(event) {
+
+        /*
+         * Don't start dragging if the user clicked
+         * one of the navigation arrows.
+         */
+
+        if (event.target.closest(".gallery-arrow")) {
+            return;
+        }
+
+
+        isDragging = true;
+
+        dragStartX = event.clientX;
+
+        dragDistance = 0;
+
+        workSlider.classList.add("interacting");
+
+        workTrack.style.animationPlayState = "paused";
+
+        workSlider.setPointerCapture(event.pointerId);
+
+    });
+
+
+
+    workSlider.addEventListener("pointermove", function(event) {
+
+        if (!isDragging) {
+            return;
+        }
+
+
+        const currentX = event.clientX;
+
+        dragDistance = currentX - dragStartX;
+
+
+        /*
+         * Move the gallery while dragging.
+         */
+
+        const currentTransform =
+            window.getComputedStyle(workTrack).transform;
+
+
+        const matrix =
+            new DOMMatrix(currentTransform);
+
+
+        let positionX = matrix.m41;
+
+
+        positionX += dragDistance;
+
+
+        /*
+         * Keep movement inside the duplicated track.
+         */
+
+        const trackWidth = workTrack.scrollWidth / 2;
+
+
+        if (positionX > 0) {
+            positionX = -trackWidth;
+        }
+
+
+        if (positionX < -trackWidth) {
+            positionX = 0;
+        }
+
+
+        workTrack.style.transform =
+            `translateX(${positionX}px)`;
+
+
+        dragStartX = currentX;
+
+    });
+
+
+
+    workSlider.addEventListener("pointerup", function() {
+
+        if (!isDragging) {
+            return;
+        }
+
+
+        isDragging = false;
+
+
+        /*
+         * Resume the automatic gallery after dragging.
+         */
+
+        clearTimeout(window.galleryResumeTimer);
+
+
+        window.galleryResumeTimer = setTimeout(function() {
+
+            workTrack.style.transform = "";
+
+            workTrack.style.animation =
+                "workScroll 40s linear infinite";
+
+            workTrack.style.animationPlayState = "running";
+
+            workSlider.classList.remove("interacting");
+
+        }, 2500);
+
+    });
+
+
+
+    workSlider.addEventListener("pointercancel", function() {
+
+        isDragging = false;
+
+        workTrack.style.animationPlayState = "running";
+
+    });
+
+
+
+    /*
+     * ==========================================
+     * LIGHTBOX
+     * ==========================================
+     */
+
+
+    let lightboxImages = [];
+
+    let currentLightboxIndex = 0;
+
+
+    /*
+     * Get all gallery images.
+     */
+
+    function getGalleryImages() {
+
+        return Array.from(
+            document.querySelectorAll(".work-image")
+        );
+
+    }
+
+
+
+    /*
+     * Open the lightbox.
+     */
+
     function openLightbox(imageContainer) {
 
-        const image = imageContainer.querySelector("img");
+        const images =
+            getGalleryImages();
 
-        const lightbox = document.getElementById("imageLightbox");
 
-        const lightboxImage = document.getElementById("lightboxImage");
+        /*
+         * Find which image was clicked.
+         */
 
-        lightboxImage.src = image.src;
+        currentLightboxIndex =
+            images.indexOf(imageContainer);
 
-        lightboxImage.alt = image.alt;
+
+        if (currentLightboxIndex === -1) {
+            currentLightboxIndex = 0;
+        }
+
+
+        lightboxImages = images;
+
+
+        showLightboxImage(currentLightboxIndex);
+
+
+        const lightbox =
+            document.getElementById("imageLightbox");
+
 
         lightbox.classList.add("active");
+
 
         document.body.style.overflow = "hidden";
 
     }
 
 
+
+    /*
+     * Display a specific lightbox image.
+     */
+
+    function showLightboxImage(index) {
+
+        if (lightboxImages.length === 0) {
+            return;
+        }
+
+
+        /*
+         * Loop from last image to first.
+         */
+
+        if (index < 0) {
+
+            index =
+                lightboxImages.length - 1;
+
+        }
+
+
+        /*
+         * Loop from first image to last.
+         */
+
+        if (index >= lightboxImages.length) {
+
+            index = 0;
+
+        }
+
+
+        currentLightboxIndex = index;
+
+
+        const container =
+            lightboxImages[currentLightboxIndex];
+
+
+        const image =
+            container.querySelector("img");
+
+
+        const label =
+            container.querySelector(".work-label");
+
+
+        const lightboxImage =
+            document.getElementById("lightboxImage");
+
+
+        const lightboxLabel =
+            document.getElementById("lightboxLabel");
+
+
+        /*
+         * Update image.
+         */
+
+        lightboxImage.src =
+            image.src;
+
+
+        lightboxImage.alt =
+            image.alt;
+
+
+        /*
+         * Update Before / After label.
+         */
+
+        if (label && label.textContent.trim() !== "") {
+
+            lightboxLabel.textContent =
+                label.textContent.trim();
+
+            lightboxLabel.style.display =
+                "block";
+
+        } else {
+
+            lightboxLabel.textContent = "";
+
+            lightboxLabel.style.display =
+                "none";
+
+        }
+
+    }
+
+
+
+    /*
+     * Previous image.
+     */
+
+    function previousLightboxImage(event) {
+
+        event.stopPropagation();
+
+        showLightboxImage(
+            currentLightboxIndex - 1
+        );
+
+    }
+
+
+
+    /*
+     * Next image.
+     */
+
+    function nextLightboxImage(event) {
+
+        event.stopPropagation();
+
+        showLightboxImage(
+            currentLightboxIndex + 1
+        );
+
+    }
+
+
+
+    /*
+     * Close lightbox.
+     */
+
     function closeLightbox(event) {
 
         /*
-         * Only close when clicking the dark background
-         * or the X button.
+         * Only close when clicking:
+         * - the dark background
+         * - the X button
          */
 
         if (
@@ -1057,9 +1814,12 @@
             event.target.classList.contains("lightbox-close")
         ) {
 
-            const lightbox = document.getElementById("imageLightbox");
+            const lightbox =
+                document.getElementById("imageLightbox");
+
 
             lightbox.classList.remove("active");
+
 
             document.body.style.overflow = "";
 
@@ -1068,13 +1828,33 @@
     }
 
 
-    /* Close lightbox with Escape key */
+
+    /*
+     * ==========================================
+     * LIGHTBOX KEYBOARD CONTROLS
+     * ==========================================
+     */
 
     document.addEventListener("keydown", function(event) {
 
-        if (event.key === "Escape") {
+        const lightbox =
+            document.getElementById("imageLightbox");
 
-            const lightbox = document.getElementById("imageLightbox");
+
+        /*
+         * Only respond when the lightbox is open.
+         */
+
+        if (!lightbox.classList.contains("active")) {
+            return;
+        }
+
+
+        /*
+         * Escape = close.
+         */
+
+        if (event.key === "Escape") {
 
             lightbox.classList.remove("active");
 
@@ -1082,7 +1862,93 @@
 
         }
 
+
+        /*
+         * Left arrow = previous.
+         */
+
+        if (event.key === "ArrowLeft") {
+
+            showLightboxImage(
+                currentLightboxIndex - 1
+            );
+
+        }
+
+
+        /*
+         * Right arrow = next.
+         */
+
+        if (event.key === "ArrowRight") {
+
+            showLightboxImage(
+                currentLightboxIndex + 1
+            );
+
+        }
+
     });
+
+
+
+    /*
+     * ==========================================
+     * LIGHTBOX SWIPE SUPPORT
+     * ==========================================
+     */
+
+    let lightboxTouchStartX = 0;
+
+
+    const lightbox =
+        document.getElementById("imageLightbox");
+
+
+    lightbox.addEventListener("touchstart", function(event) {
+
+        lightboxTouchStartX =
+            event.touches[0].clientX;
+
+    }, { passive: true });
+
+
+
+    lightbox.addEventListener("touchend", function(event) {
+
+        const touchEndX =
+            event.changedTouches[0].clientX;
+
+
+        const difference =
+            touchEndX - lightboxTouchStartX;
+
+
+        /*
+         * Require at least 50px of movement.
+         */
+
+        if (Math.abs(difference) < 50) {
+            return;
+        }
+
+
+        if (difference > 0) {
+
+            showLightboxImage(
+                currentLightboxIndex - 1
+            );
+
+        } else {
+
+            showLightboxImage(
+                currentLightboxIndex + 1
+            );
+
+        }
+
+    }, { passive: true });
+
 
 </script>
 
